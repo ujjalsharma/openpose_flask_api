@@ -1,5 +1,6 @@
 import os
 import glob
+from sys import platform
 import shutil
 # Importing the important libraries
 import tensorflow as tf
@@ -143,6 +144,9 @@ def cnn_video_prediction():
     os.mkdir("static/saved_skeletons/"+video_name[:-4])
     # run openpose on the video path
     commnd = "!(cd openpose/ && bin/OpenPoseDemo.exe --video "+video_path+" --net_resolution 160x160 --write_images "+skeleton_folder_path+" --disable_blending)"
+    
+    if platform == "linux" or platform == "linux2":
+        commnd = "!(cd openpose/ && ./build/examples/openpose/openpose.bin --video "+video_path+" --net_resolution 160x160 --write_images "+skeleton_folder_path+" --disable_blending)"
     os.system(commnd)
 
     # filter only gait cycle and process the images

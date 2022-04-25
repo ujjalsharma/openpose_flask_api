@@ -1,5 +1,6 @@
-openpose/
+openpose_win/
 image_uploads/*
 video_uploads/*
 static/saved_skeletons/*
 static/seis/*
+openpose_zip.zip
